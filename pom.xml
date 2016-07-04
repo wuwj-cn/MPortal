@@ -82,10 +82,12 @@
 		</dependency>
 		<!-- shiro end -->
 
+		<!-- mysql start -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+		<!-- mysql end -->
 	</dependencies>
 
 	<build>
