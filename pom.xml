@@ -101,7 +101,7 @@
 				<configuration>
 					<url>http://localhost:8080/manager/text</url>
 					<username>admin</username>
-					<password>admin</password>
+					<password>123456</password>
 					<server>tomcat</server>
 					<path>/spring-boot-sample</path>
 				</configuration>
