@@ -4,10 +4,10 @@
 
 	<groupId>com.moke</groupId>
 	<artifactId>MPortal</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
 
-	<name>spring-boot-sample</name>
+	<name>MPortal</name>
 	<url>http://maven.apache.org</url>
 
 	<parent>
@@ -30,10 +30,10 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -106,21 +106,21 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<url>http://localhost/manager/text</url>
+					<url>http://localhost:8080/manager/text</url>
 					<username>admin</username>
 					<password>123456</password>
 					<server>tomcat</server>
-					<path>/spring-boot-sample</path>
+					<path>/MPortal</path>
 				</configuration>
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>tomcat-deploy</id> -->
-<!-- 						<phase>deploy</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>deploy</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <id>tomcat-deploy</id> -->
+				<!-- <phase>deploy</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>deploy</goal> -->
+				<!-- </goals> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
 			</plugin>
 		</plugins>
 	</build>
