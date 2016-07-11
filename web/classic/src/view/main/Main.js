@@ -5,7 +5,7 @@
  *
  * TODO - Replace this content of this view to suite the needs of your application.
  */
-Ext.define('MProtal.view.main.Main', {
+Ext.define('MPortal.view.main.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'app-main',
 
@@ -13,9 +13,9 @@ Ext.define('MProtal.view.main.Main', {
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
 
-        'MProtal.view.main.MainController',
-        'MProtal.view.main.MainModel',
-        'MProtal.view.main.List'
+        'MPortal.view.main.MainController',
+        'MPortal.view.main.MainModel',
+        'MPortal.view.main.List'
     ],
 
     controller: 'main',

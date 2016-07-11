@@ -1,12 +1,12 @@
 /**
  * This view is an example list of people.
  */
-Ext.define('MProtal.view.main.List', {
+Ext.define('MPortal.view.main.List', {
     extend: 'Ext.grid.Panel',
     xtype: 'mainlist',
 
     requires: [
-        'MProtal.store.Personnel'
+        'MPortal.store.Personnel'
     ],
 
     title: 'Personnel',

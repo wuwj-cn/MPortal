@@ -1,4 +1,4 @@
-Ext.define('MProtal.store.Personnel', {
+Ext.define('MPortal.store.Personnel', {
     extend: 'Ext.data.Store',
 
     alias: 'store.personnel',

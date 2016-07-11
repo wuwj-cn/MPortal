@@ -2,7 +2,7 @@
     /**
      * The application's namespace.
      */
-    "name": "MProtal",
+    "name": "MPortal",
     
     /**
      * The version of the application.
@@ -76,13 +76,13 @@
     "sass": {
         /**
          * The root namespace to use when mapping *.scss files to classes in the
-         * sass/src and sass/var directories. For example, "MProtal.view.Foo" would
-         * map to "sass/src/view/Foo.scss". If we changed this to "MProtal.view" then
+         * sass/src and sass/var directories. For example, "MPortal.view.Foo" would
+         * map to "sass/src/view/Foo.scss". If we changed this to "MPortal.view" then
          * it would map to "sass/src/Foo.scss". To style classes outside the app's
          * root namespace, change this to "". Doing so would change the mapping of
-         * "MProtal.view.Foo" to "sass/src/MProtal/view/Foo.scss".
+         * "MPortal.view.Foo" to "sass/src/MPortal/view/Foo.scss".
          */
-        "namespace": "MProtal",
+        "namespace": "MPortal",
 
         /**
          * File used to save sass variables edited via Sencha Inspector. This file
@@ -577,5 +577,5 @@
      * Uniquely generated id for this application, used as prefix for localStorage keys.
      * Normally you should never change this value.
      */
-    "id": "7453abd9-bc38-4629-b1fa-8172041b1760"
+    "id": "d3f07d05-76a4-4c7b-9c9f-64df550e4c5a"
 }

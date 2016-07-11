@@ -3,10 +3,14 @@
  * calls Ext.application(). This is the ideal place to handle application launch and
  * initialization details.
  */
-Ext.define('MProtal.Application', {
+Ext.define('MPortal.Application', {
     extend: 'Ext.app.Application',
     
-    name: 'MProtal',
+    name: 'MPortal',
+    
+    controllers: [
+        'MPortal.Root'
+    ],
 
     stores: [
         // TODO: add global / shared stores here

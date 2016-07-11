@@ -15,19 +15,19 @@ This folder contains misc. support code for Sass builds (global functions, etc.)
 
 This folder contains Sass files defining CSS rules corresponding to classes
 included in the application's JavaScript code build. By default, files in this 
-folder are mapped to the application's root namespace, 'MProtal'. This is set in
+folder are mapped to the application's root namespace, 'MPortal'. This is set in
 `"app.json"`:
 
     "sass": {
-        "namespace": "MProtal"
+        "namespace": "MPortal"
     }
 
 ### ./sass/var
 
 This folder contains Sass files defining Sass variables corresponding to classes
 included in the application's JavaScript code build. By default, files in this 
-folder are mapped to the application's root namespace, 'MProtal' in the same way
-as `"MProtal/sass/src"`.
+folder are mapped to the application's root namespace, 'MPortal' in the same way
+as `"MPortal/sass/src"`.
 
 ## Slicing
 
