@@ -1,5 +1,6 @@
 package com.moke.MPortal.model;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -72,11 +73,12 @@ public class User {
 	}
 
 	public List<Role> getRoleList() {
-		return roleList;
+//		return roleList;
+		return Collections.EMPTY_LIST;
 	}
 
 	public void setRoleList(List<Role> roleList) {
-		this.roleList = roleList;
+//		this.roleList = roleList;
 	}
 
 	@Transient

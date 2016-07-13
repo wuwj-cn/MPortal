@@ -1,21 +1,71 @@
-/**
- * This class is the controller for the main view for the application. It is specified as
- * the "controller" of the Main view class.
- *
- * TODO - Replace this content of this view to suite the needs of your application.
- */
 Ext.define('MPortal.view.main.MainController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.main',
 
-    onItemSelected: function (sender, record) {
-        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
+    createTab: function (prefix, rec, cfg) {
+        var tabs = this.lookupReference('main'),
+            id = prefix + '_' + rec.getId(),
+            tab = tabs.items.getByKey(id);
+
+        if (!tab) {
+            cfg.itemId = id;
+            cfg.closable = true;
+            tab = tabs.add(cfg);
+        }
+
+        tabs.setActiveTab(tab);
     },
 
-    onConfirm: function (choice) {
-        if (choice === 'yes') {
-            //
-        }
+    editUser: function (userRecord) {
+        var win = new Ticket.view.user.User({
+            viewModel: {
+                data: {
+                    theUser: userRecord
+                }
+            }
+        });
+
+        win.show();
+    },
+
+    onClickUserName: function () {
+        var data = this.getViewModel().getData();
+        this.editUser(data.currentUser);
+    },
+
+    onEditUser: function (ctrl, rec) {
+        this.editUser(rec);
+    },
+
+    onProjectSelect: function () {
+        var tabs = this.lookupReference('main');
+        tabs.setActiveTab(0);
+    },
+
+    onProjectSearchClick: function (view, rowIdx, colIdx, item, e, rec) {
+        this.createTab('project', rec, {
+            xtype: 'ticketsearch',
+            listeners: {
+                viewticket: 'onViewTicket'
+            },
+            viewModel: {
+                data: {
+                    theProject: rec
+                }
+            }
+        });
+    },
+    
+    onViewTicket: function (view, rec) {
+        this.createTab('ticket', rec, {
+            xtype: 'ticketdetail',
+            session: true,
+            viewModel: {
+                data: {
+                    theTicket: rec
+                }
+            }
+        });
     }
 });

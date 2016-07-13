@@ -1,83 +1,63 @@
-/**
- * Generates a set of style rules for the "navigation" tab UI.
+/*
+ * This file is associated with the Main view class.
  */
-@include extjs-tab-panel-ui(
-    $ui: 'navigation',
-    $ui-tab-background-color: transparent,
-    $ui-tab-background-color-over: #505050,
-    $ui-tab-background-color-active: #303030,
-    $ui-tab-background-gradient: 'none',
-    $ui-tab-background-gradient-over: 'none',
-    $ui-tab-background-gradient-active: 'none',
-    $ui-tab-color: #acacac,
-    $ui-tab-color-over: #c4c4c4,
-    $ui-tab-color-active: #fff,
-    $ui-tab-glyph-color: #acacac,
-    $ui-tab-glyph-color-over: #c4c4c4,
-    $ui-tab-glyph-color-active: #fff,
-    $ui-tab-glyph-opacity: 1,
-    $ui-tab-border-radius: 0,
-    $ui-tab-border-width: 0,
-    $ui-tab-inner-border-width: 0,
-    $ui-tab-padding: 24px,
-    $ui-tab-margin: 0,
-    $ui-tab-font-size: 15px,
-    $ui-tab-font-size-over: 15px,
-    $ui-tab-font-size-active: 15px,
-    $ui-tab-line-height: 19px,
-    $ui-tab-font-weight: bold,
-    $ui-tab-font-weight-over: bold,
-    $ui-tab-font-weight-active: bold,
-    $ui-tab-icon-width: 24px,
-    $ui-tab-icon-height: 24px,
-    $ui-tab-icon-spacing: 5px,
-    $ui-bar-background-color: #404040,
-    $ui-bar-background-gradient: 'none',
-    $ui-bar-padding: 0,
-    $ui-strip-height: 0
-);
+$app-header-background-color: #333;
+$app-header-text-color: #fff;
+$app-header-text-shadow-color: null;
+$app-header-use-gradient: true;
 
-/**
- * Generates a set of style rules for the "navigation" panel UI.
- */
-@include extjs-panel-ui(
-    $ui: 'navigation',
-    $ui-header-color: #fff,
-    $ui-header-glyph-color: #fff,
-    $ui-header-glyph-opacity: 1,
-    $ui-header-font-size: 20px,
-    $ui-header-line-height: 24px,
-    $ui-header-font-weight: bold,
-    $ui-header-icon-height: 24px,
-    $ui-header-icon-width: 24px,
-    $ui-header-icon-spacing: 15px,
-    $ui-header-background-color: $base-color,
-    $ui-header-padding: 0,
-    $ui-header-text-margin: 36px,
-    $ui-header-noborder-adjust: false
-);
+@if $theme-name == 'theme-neptune' or $theme-name == 'theme-neptune-touch' {
+  $app-header-background-color: #81af34;
+  $app-header-text-shadow-color: #4e691f;
+}
 
-.x-title-icon-navigation {
-    font-family: FontAwesome;
+@if $theme-name == 'theme-classic' or $theme-name == 'theme-gray' {
+  $app-header-background-color: darken($base-color, 55%);
+}
+
+@if $theme-name == 'theme-crisp' {
+  $app-header-background-color: #2a3f5d;
+  $app-header-use-gradient: false;
+}
+
+#app-header {
+    @if $app-header-use-gradient {
+      @include background-image(
+            linear-gradient(top, lighten($app-header-background-color, 5),
+                                 darken($app-header-background-color, 5)));
+    } @else {
+      background-color: $app-header-background-color;
+    }
+
+    border-bottom: 1px solid darken($app-header-background-color, 15);
+
+    @if $theme-name == 'theme-neptune' {
+      .#{$prefix}nlg & {
+          background-image: url(images/header-bg.png);
+      }
+    }
+}
+
+.app-header-text {
+    padding: 15px 0 10px 0;
+    cursor: default;
+
     color: #fff;
-    font-size: 24px;
-    line-height: 24px;
-}
+    font-size: 18px;
+    font-weight: bold;
 
-.x-tab-icon-el-navigation {
-    font-family: FontAwesome;
-    color: #acacac;
-
-    .x-tab-over & {
-        color: #c4c4c4;
-    }
-
-    .x-tab-active & {
-        color: #fff;
+    @if $app-header-text-shadow-color != null {
+        text-shadow: 0 1px 0 $app-header-text-shadow-color;
     }
 }
 
-.x-panel-header-title-navigation > .x-title-text-navigation:after {
-    top: 30px;
-    right: -24px;
+#app-header-logo {
+    width: 40px;
+    height: 25px;
+
+    background: url(images/logo.png) no-repeat center 4px;
+}
+
+#app-header-username {
+    cursor: pointer;
 }

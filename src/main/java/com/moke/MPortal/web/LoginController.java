@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.moke.MPortal.model.User;
+
 @Controller
 public class LoginController {
 
@@ -26,7 +28,7 @@ public class LoginController {
 
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	@ResponseBody
-	public String login(String username, String password) {
+	public Object login(String username, String password) {
 		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 		// 获取当前的Subject
 		Subject currentUser = SecurityUtils.getSubject();
@@ -54,7 +56,7 @@ public class LoginController {
 		// 验证是否登录成功
 		if (currentUser.isAuthenticated()) {
 			logger.info("user authentiocated ...");
-			return "user authentiocated";
+			return new User(username, password);
 		} else {
 			token.clear();
 			return "user not authentiocated";

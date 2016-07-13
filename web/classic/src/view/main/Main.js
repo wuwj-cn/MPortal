@@ -1,104 +1,98 @@
-/**
- * This class is the main view for the application. It is specified in app.js as the
- * "mainView" property. That setting automatically applies the "viewport"
- * plugin causing this view to become the body element (i.e., the viewport).
- *
- * TODO - Replace this content of this view to suite the needs of your application.
- */
 Ext.define('MPortal.view.main.Main', {
-    extend: 'Ext.tab.Panel',
-    xtype: 'app-main',
-
+    extend: 'Ext.container.Viewport',
     requires: [
-        'Ext.plugin.Viewport',
-        'Ext.window.MessageBox',
-
+        'MPortal.model.*',
+        'MPortal.view.dashboard.Dashboard',
+        'MPortal.view.ticket.Detail',
+        'MPortal.view.ticket.Search',
         'MPortal.view.main.MainController',
         'MPortal.view.main.MainModel',
-        'MPortal.view.main.List'
+        'Ext.layout.container.Border'
     ],
 
     controller: 'main',
-    viewModel: 'main',
-
-    ui: 'navigation',
-
-    tabBarHeaderPosition: 1,
-    titleRotation: 0,
-    tabRotation: 0,
-
-    header: {
-        layout: {
-            align: 'stretchmax'
-        },
-        title: {
-            bind: {
-                text: '{name}'
-            },
-            flex: 0
-        },
-        iconCls: 'fa-th-list'
+    viewModel: {
+        type: 'main'
     },
 
-    tabBar: {
-        flex: 1,
-        layout: {
-            align: 'stretch',
-            overflowHandler: 'none'
-        }
-    },
-
-    responsiveConfig: {
-        tall: {
-            headerPosition: 'top'
-        },
-        wide: {
-            headerPosition: 'left'
-        }
-    },
-
-    defaults: {
-        bodyPadding: 20,
-        tabConfig: {
-            plugins: 'responsive',
-            responsiveConfig: {
-                wide: {
-                    iconAlign: 'left',
-                    textAlign: 'left'
-                },
-                tall: {
-                    iconAlign: 'top',
-                    textAlign: 'center',
-                    width: 120
-                }
-            }
-        }
-    },
-
+    layout: 'border',
+    
     items: [{
-        title: 'Home',
-        iconCls: 'fa-home',
-        // The following grid shares a store with the classic version's grid as well!
+        xtype: 'container',
+        id: 'app-header',
+        region: 'north',
+        height: 52,
+        layout: {
+            type: 'hbox',
+            align: 'middle'
+        },
+
         items: [{
-            xtype: 'mainlist'
+            xtype: 'component',
+            id: 'app-header-logo'
+        },{
+            xtype: 'component',
+            cls: 'app-header-text',
+            bind: '{currentOrg.name}',
+            flex: 1
+        },{
+            xtype: 'component',
+            id: 'app-header-username',
+            cls: 'app-header-text',
+            bind: '{currentUser.name}',
+            listeners: {
+                click: 'onClickUserName',
+                element: 'el'
+            },
+            margin: '0 10 0 0'
         }]
     }, {
-        title: 'Users',
-        iconCls: 'fa-user',
+        region: 'west',
+        xtype: 'grid',
+        reference: 'projects',
+        title: 'Projects',
+        width: 250,
+        split: true,
+        collapsible: true,
+        selModel: {
+            listeners: {
+                selectionchange: 'onProjectSelect'
+            }
+        },
         bind: {
-            html: '{loremIpsum}'
-        }
+            store: '{currentOrg.projects}',
+            // Bind the project for the current user as the default selection (single).
+            selection: {
+                bindTo: '{currentUser.project}',
+                single: true
+            }
+        },
+        columns: [{
+            text: 'Name',
+            dataIndex: 'name',
+            flex: 1
+        }, {
+            xtype: 'actioncolumn',
+            width: 20,
+            handler: 'onProjectSearchClick',
+            stopSelection: false,
+            items: [{
+                tooltip: 'Search tickets',
+                iconCls: 'search'
+            }]
+        }]
     }, {
-        title: 'Groups',
-        iconCls: 'fa-users',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Settings',
-        iconCls: 'fa-cog',
-        bind: {
-            html: '{loremIpsum}'
-        }
+        xtype: 'tabpanel',
+        region: 'center',
+        flex: 1,
+        reference: 'main',
+        items: [{
+            xtype: 'app-dashboard',
+            title: 'Dashboard',
+            listeners: {
+                viewticket: 'onViewTicket',
+                edituser: 'onEditUser'
+            }
+        }]
     }]
 });
