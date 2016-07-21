@@ -1,12 +1,8 @@
 Ext.define('MPortal.view.main.MainModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.main'
+    alias: 'viewmodel.main',
 
-    /**
-     * @property {MPortal.model.Organization} currentOrg
-     */
-
-    /**
-     * @property {MPortal.model.User} currentUser
-     */
+    data: {
+        selectedView: false
+    }
 });

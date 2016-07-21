@@ -1,98 +1,48 @@
 Ext.define('MPortal.view.main.Main', {
     extend: 'Ext.container.Viewport',
-    requires: [
-        'MPortal.model.*',
-        'MPortal.view.dashboard.Dashboard',
-        'MPortal.view.ticket.Detail',
-        'MPortal.view.ticket.Search',
-        'MPortal.view.main.MainController',
-        'MPortal.view.main.MainModel',
+    requires:[
+        'Ext.tab.Panel',
         'Ext.layout.container.Border'
     ],
 
     controller: 'main',
-    viewModel: {
-        type: 'main'
-    },
+    viewModel: 'main',
 
     layout: 'border',
-    
-    items: [{
-        xtype: 'container',
-        id: 'app-header',
-        region: 'north',
-        height: 52,
-        layout: {
-            type: 'hbox',
-            align: 'middle'
-        },
+    stateful: true,
+    stateId: 'kitchensink-viewport',
 
-        items: [{
-            xtype: 'component',
-            id: 'app-header-logo'
-        },{
-            xtype: 'component',
-            cls: 'app-header-text',
-            bind: '{currentOrg.name}',
-            flex: 1
-        },{
-            xtype: 'component',
-            id: 'app-header-username',
-            cls: 'app-header-text',
-            bind: '{currentUser.name}',
-            listeners: {
-                click: 'onClickUserName',
-                element: 'el'
-            },
-            margin: '0 10 0 0'
+    items: [{
+        region: 'north',
+        xtype: 'appHeader'
+    }, {
+        region: 'center',
+        xtype: 'contentPanel',
+        reference: 'contentPanel',
+        ariaRole: 'main',
+        dockedItems: [{
+            xtype: 'navigation-toolbar'
         }]
     }, {
-        region: 'west',
-        xtype: 'grid',
-        reference: 'projects',
-        title: 'Projects',
-        width: 250,
+        xtype: 'codePreview',
+        region: 'east',
+        id: 'east-region',
+        itemId: 'codePreview',
+        stateful: true,
+        stateId: 'mainnav.east',
         split: true,
         collapsible: true,
-        selModel: {
-            listeners: {
-                selectionchange: 'onProjectSelect'
-            }
-        },
-        bind: {
-            store: '{currentOrg.projects}',
-            // Bind the project for the current user as the default selection (single).
-            selection: {
-                bindTo: '{currentUser.project}',
-                single: true
-            }
-        },
-        columns: [{
-            text: 'Name',
-            dataIndex: 'name',
-            flex: 1
-        }, {
-            xtype: 'actioncolumn',
-            width: 20,
-            handler: 'onProjectSearchClick',
-            stopSelection: false,
-            items: [{
-                tooltip: 'Search tickets',
-                iconCls: 'search'
-            }]
-        }]
-    }, {
-        xtype: 'tabpanel',
-        region: 'center',
-        flex: 1,
-        reference: 'main',
-        items: [{
-            xtype: 'app-dashboard',
-            title: 'Dashboard',
-            listeners: {
-                viewticket: 'onViewTicket',
-                edituser: 'onEditUser'
-            }
-        }]
-    }]
+        collapsed: true,
+        width: 350,
+        minWidth: 100
+    }],
+
+    applyState: function(state) {
+        this.getController().applyState(state);
+
+    },
+
+    getState: function() {
+        return this.getController().getState();
+    }
 });

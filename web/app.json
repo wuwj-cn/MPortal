@@ -211,7 +211,15 @@
         {
             "path": "app.js",
             "bundle": true
-        }
+        },
+        {
+            "path": "lib/prettify/prettify.js",
+            "includeInBundle": true
+    	},
+    	{
+            "path": "classic/shared/examples.js",
+            "includeInBundle": true
+    	}
     ],
 
     
@@ -272,6 +280,13 @@
             "path": "${build.out.css.path}",
             "bundle": true,
             "exclude": ["fashion"]
+        },
+        {
+            "path": "lib/prettify/prettify.css"
+        },
+        {
+            "path": "../resources/Sencha-Examples/style.css",
+            "remote": true
         }
     ],
 
@@ -414,8 +429,8 @@
      */
     
     "output": {
-        //"base": "${workspace.build.dir}/${build.environment}/${app.name}",
-        "base": "../src/main/resources/static",
+        "base": "${workspace.build.dir}/${build.environment}/${app.name}",
+        //"base": "../src/main/resources/static",
         "page": "index.html",
         "manifest": "${build.id}.json",
         "js": "${build.id}/app.js",
