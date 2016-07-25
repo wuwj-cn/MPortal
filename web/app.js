@@ -3,6 +3,10 @@
  * needed for your application, but these edits will have to be merged by
  * Sencha Cmd when upgrading.
  */
+
+// MPortal is not fully WAI-ARIA compliant at this point
+Ext.enableAriaButtons = false;
+
 Ext.application({
     name: 'MPortal',
 

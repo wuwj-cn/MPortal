@@ -234,16 +234,14 @@ Ext.define('MPortal.store.Navigation', {
     getNavItems: function() {
         return this.addIconClasses([
             {
-                text: 'Panels',
+                text: '系统管理',
                 id: 'panels',
                 expanded: true,
-                description: 'Panels are the basic container that makes up the structure ' +
-                    'of most applications. Panels have a header and body, and can be arranged ' +
-                    'in various ways using layouts. These examples provide a few common use cases of Ext JS Panels.',
+                description: '系统管理，包含组织机构、用户、权限等管理',
                 children: [
-                    { id: 'basic-panels', text: 'Basic Panel', leaf: true },
-                    { id: 'framed-panels', text: 'Framed Panel', leaf: true },
-                    { id: 'panel-header-position', text: 'Header Positioning', leaf: true }
+                    { id: 'basic-panels', text: '组织机构', leaf: true },
+                    { id: 'framed-panels', text: '用户管理', leaf: true },
+                    { id: 'panel-header-position', text: '权限管理', leaf: true }
                 ]
             },
             {

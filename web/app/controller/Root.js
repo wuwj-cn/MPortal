@@ -2,8 +2,9 @@
  * This global controller manages the login view and ensures that view is created when
  * the application is launched. Once login is complete we then create the main view.
  */
-Ext.define('MPortal.Root', {
+Ext.define('MPortal.controller.Root', {
     extend: 'Ext.app.Controller',
+    namespace: 'MPortal',
     
     requires: [
         'MPortal.view.login.Login',

@@ -8,17 +8,23 @@ Ext.define('MPortal.Application', {
 
 	name : 'MPortal',
 
-	requires : [ 'Ext.app.*', 'Ext.state.CookieProvider',
-			'Ext.window.MessageBox', 'Ext.tip.QuickTipManager',
-			'MPortal.*', 'Ext.chart.*' ],
+	requires : [ 
+	    'Ext.app.*', 
+	    'Ext.state.CookieProvider',
+//	    'Ext.window.MessageBox', 
+//	    'Ext.tip.QuickTipManager',
+		'MPortal.view.*'
+	],
 
 	controllers : [
 //	    'MPortal.Root',
-	    'MPortal.Global'
+	    'Global',
+	    'Samples',
+	    'Direct'
 	],
 
 	stores : [
-	// TODO: add global / shared stores here
+	    // TODO: add global / shared stores here
 	],
 
 	init: function() {
@@ -43,7 +49,11 @@ Ext.define('MPortal.Application', {
 	},
 	
 	launch : function() {
-		// TODO - Launch the application
+//		if (/[?&]solo\b/.test(location.search)) {
+//            Ext.create('KitchenSink.view.main.Solo');
+//        } else {
+//            Ext.create('KitchenSink.view.main.Main');
+//        }
 	},
 
 	onAppUpdate : function() {
