@@ -25,7 +25,7 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String rolename;
     @OneToMany(mappedBy = "role", fetch=FetchType.EAGER)
     private List<Permission> permissionList;// 一个角色对应多个权限
@@ -34,11 +34,11 @@ public class Role {
             @JoinColumn(name = "user_id") })
     private List<User> userList;// 一个角色对应多个用户
 
-    public Integer getId() {
+    public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

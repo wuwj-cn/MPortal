@@ -2,11 +2,15 @@ package com.moke.MPortal.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.moke.MPortal.model.User;
 import com.moke.MPortal.model.UserDao;
+import com.moke.core.advice.Result;
 
 @Controller
 @RequestMapping(value="/user")
@@ -23,25 +27,25 @@ public class UserController {
 	   * @param name User's name
 	   * @return A string describing if the user is succesfully created or not.
 	   */
-	  @RequestMapping("/create")
+	  @RequestMapping(method = RequestMethod.POST)
 	  @ResponseBody
-	  public String create(String email, String name) {
-	    User user = null;
+	  public Result create(@RequestBody User user) {
+//	    User user = null;
 	    try {
-	      user = new User(email, name);
+//	      user = new User(username, password);
 	      userDao.save(user);
 	    }
 	    catch (Exception ex) {
-	      return "Error creating the user: " + ex.toString();
+	      return Result.failure(ex);
 	    }
-	    return "User succesfully created! (id = " + user.getId() + ")";
+	    return Result.sucess(user);
 	  }
 	  
-	  @RequestMapping("/get/{id}")
+	  @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
 	  @ResponseBody
-	  public String getById(Long id) {
+	  public Result getById(Long id) {
 		  User user = userDao.findOne(id);
-		  return "User succesfully get! (username = " + user.getUsername() + ")";
+		  return Result.sucess(user);
 	  }
 	  
 	  /**
@@ -50,17 +54,17 @@ public class UserController {
 	   * @param id The id of the user to delete
 	   * @return A string describing if the user is succesfully deleted or not.
 	   */
-	  @RequestMapping("/delete")
+	  @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
 	  @ResponseBody
-	  public String delete(long id) {
+	  public Result delete(long id) {
 	    try {
 	      User user = new User();
 	      userDao.delete(user);
 	    }
 	    catch (Exception ex) {
-	      return "Error deleting the user: " + ex.toString();
+	      return Result.failure(ex);
 	    }
-	    return "User succesfully deleted!";
+	    return Result.sucess("delete success");
 	  }
 	  
 	  /**
@@ -72,17 +76,18 @@ public class UserController {
 	   * @param name The new name.
 	   * @return A string describing if the user is succesfully updated or not.
 	   */
-	  @RequestMapping("/update")
+	  @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	  @ResponseBody
-	  public String updateUser(long id, String email, String name) {
+	  public Result updateUser(@RequestBody User user) {
 	    try {
-	      User user = userDao.findOne(id);
+//	      User user = userDao.findOne(Long.valueOf(id));
 	      userDao.save(user);
+	      return Result.sucess(user);
 	    }
 	    catch (Exception ex) {
-	      return "Error updating the user: " + ex.toString();
+	    	ex.printStackTrace();
+	      return Result.failure(ex.getMessage());
 	    }
-	    return "User succesfully updated!";
 	  }
 
 	  // ------------------------

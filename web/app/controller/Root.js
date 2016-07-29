@@ -4,7 +4,7 @@
  */
 Ext.define('MPortal.controller.Root', {
     extend: 'Ext.app.Controller',
-    namespace: 'MPortal',
+//    namespace: 'MPortal',
     
     requires: [
         'MPortal.view.login.Login',

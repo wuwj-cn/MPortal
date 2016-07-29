@@ -18,18 +18,18 @@ public class Permission {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String permissionname;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;// 一个权限对应一个角色
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

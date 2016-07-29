@@ -1,71 +1,56 @@
-/**
- * This class defines the User editing view.
- */
 Ext.define('MPortal.view.user.User', {
-    extend: 'Ext.window.Window',
+    extend: 'Ext.form.Panel',
+    xtype: 'user',
     
-    controller: 'user', // links to Ticket.view.user.UserController
+    controller: 'user',
     
-    width: 300,
-    minHeight: 250,
-    height: 450,
-    bodyPadding: 10,
-    layout: {
-        type: 'vbox',
-        align: 'stretch'
+    //<example>
+    exampleTitle: '用户信息',
+    profiles: {
+        classic: {
+            width: 520
+        },
+        gray: {
+            width: 520
+        },
+        neptune: {
+            width: 590
+        },
+        'neptune-touch': {
+            width: 700
+        }
     },
+    //</example>
+    
+    title: '用户信息',
+    frame: true,
+    resizable: true,
+    minHeight: 200,
 
-    // As a Window the default property we are binding is "title":
-    bind: 'Edit User: {theUser.name}',
-
-    modal: true,
-
-    tools: [{
-        type: 'gear',
-        tooltip: 'Edit Groups',
-
-        // Call is routed to our ViewController (Ticket.view.user.UserController):
-        callback: 'onGroupsClick'
-    }],
+    layout: 'fit',
+    
+    defaults: {
+        layout: 'form',
+        xtype: 'container',
+        defaultType: 'textfield',
+        style: 'width: 100%'
+    },
     
     items: [{
-        xtype: 'textfield',
-        fieldLabel: 'Name',
-        labelWidth: 70,
-
-        // As a textfield the default property we are binding is "value":
-        bind: '{theUser.name}'
-    }, {
-        // The multiselector is basically a grid that displays the currently selected
-        // items. To add items there is a Search tool configured below.
-        xtype: 'multiselector',
-        bind: '{theUser.groups}',
-
-        title: 'Groups',
-
-        flex: 1,
-        margin: '10 0',
-
-        // This configures the Search popup. In this case we want to browse all groups.
-        search: {
-            store: {
-                model: 'Group'
-            }
-        }
+        items: [
+            { name: 'username', fieldLabel: 'username' },
+            { name: 'password', fieldLabel: 'password' }
+        ]
     }],
-
-    buttons: [{
-        text: 'Groups',
-        listeners: {
-            // Call is routed to our ViewController (Ticket.view.user.UserController):
-            click: 'onGroupsClick'
-        }
-    }, '->', {
-        text: 'Close',
-        listeners: {
-            // Call is routed to our ViewController (Ticket.view.user.UserController) but
-            // the "closeView" method is a helper inherited from Ext.app.ViewController.
-            click: 'closeView'
-        }
-    }]
+    
+    buttons: [
+        { text: 'OK', handler: 'onOkClick' },
+        { text: 'Cancel' }
+    ],
+    
+    initComponent: function() {
+        this.width = this.profileInfo.width;
+        this.minWidth = this.profileInfo.width;
+        this.callParent();
+    }
 });

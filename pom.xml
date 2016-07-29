@@ -21,6 +21,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<shiro.version>1.2.5</shiro.version>
+		<commons-lang.version>3.3.2</commons-lang.version>
 	</properties>
 
 	<dependencies>
@@ -93,6 +94,12 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<!-- mysql end -->
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>

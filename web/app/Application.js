@@ -13,14 +13,12 @@ Ext.define('MPortal.Application', {
 	    'Ext.state.CookieProvider',
 //	    'Ext.window.MessageBox', 
 //	    'Ext.tip.QuickTipManager',
-		'MPortal.view.*'
+		'MPortal.*'
 	],
 
 	controllers : [
 //	    'MPortal.Root',
-	    'Global',
-	    'Samples',
-	    'Direct'
+	    'Global'
 	],
 
 	stores : [

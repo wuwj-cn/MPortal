@@ -1,6 +1,6 @@
 Ext.define('MPortal.controller.Global', {
     extend: 'Ext.app.Controller',
-    namespace: 'MPortal',
+//    namespace: 'MPortal',
     requires: [
         'Ext.window.*'
     ],
@@ -195,7 +195,7 @@ Ext.define('MPortal.controller.Global', {
             resources.push({
                 type: 'View',
                 path: clsProto.$className.replace(/\./g, '/')
-                    .replace('MPortal', 'classic/samples') + '.js'
+                    .replace('MPortal', 'classic/src') + '.js'
             });
 
             if (otherContent) {
