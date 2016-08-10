@@ -18,7 +18,8 @@ Ext.define('MPortal.Application', {
 
 	controllers : [
 //	    'MPortal.Root',
-	    'Global'
+	    'Global',
+	    'Samples'
 	],
 
 	stores : [
@@ -34,7 +35,7 @@ Ext.define('MPortal.Application', {
         Ext.create('MPortal.store.Navigation', {
             storeId: 'navigation'
         });
-
+        
         // Set the default route to start the application.
         this.setDefaultToken('all');
 

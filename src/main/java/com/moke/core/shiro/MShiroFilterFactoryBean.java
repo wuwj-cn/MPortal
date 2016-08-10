@@ -1,4 +1,4 @@
-package com.moke.MPortal.shiro;
+package com.moke.core.shiro;
 
 import java.io.IOException;
 import java.util.HashSet;

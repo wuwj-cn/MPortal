@@ -5,17 +5,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -23,24 +25,26 @@ import org.hibernate.validator.constraints.NotEmpty;
  *
  */
 @Entity
-@Table(name = "user")
+@Table(name = "t_user")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(length=32)
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid",strategy="uuid")
+    private String id;
+    
     @NotEmpty(message = "用户名不能为空")
     private String username;
+    
     @NotEmpty(message = "密码不能为空")
     private String password;    
-    @ManyToMany(fetch=FetchType.EAGER)
-    @JoinTable(name = "t_user_role", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "role_id") })
-    private List<Role> roleList;// 一个用户具有多个角色
+    
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private UserRole userRole;// 一个用户对应多个角色
 
-    public User() {
-        super();
-    }
+    public User() {}
 
     public User(String username, String password) {
         super();
@@ -48,11 +52,11 @@ public class User {
         this.password = password;
     }
 
-    public Long getId() {
+    public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -72,11 +76,21 @@ public class User {
 		this.password = password;
 	}
 
+	public UserRole getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(UserRole userRole) {
+		this.userRole = userRole;
+	}
+
+	@Transient
 	public List<Role> getRoleList() {
 //		return roleList;
 		return Collections.EMPTY_LIST;
 	}
 
+	@Transient
 	public void setRoleList(List<Role> roleList) {
 //		this.roleList = roleList;
 	}

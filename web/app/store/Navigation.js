@@ -239,8 +239,9 @@ Ext.define('MPortal.store.Navigation', {
                 expanded: true,
                 description: '系统管理，包含组织机构、用户、权限等管理',
                 children: [
+                    { id: 'm-menu', text: '菜单管理', leaf: true },
                     { id: 'basic-panels', text: '组织机构', leaf: true },
-                    { id: 'user', text: '用户管理', leaf: true },
+                    { id: 'm-user', text: '用户管理', leaf: true },
                     { id: 'panel-header-position', text: '权限管理', leaf: true }
                 ]
             },

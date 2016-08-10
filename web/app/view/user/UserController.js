@@ -18,18 +18,13 @@ Ext.define('MPortal.view.user.UserController', {
     	        console.log('failure');
     	    },
     	    success: function(record, operation) {
-    	        console.log('success');
-    	        console.log(record);
     	        record.set('username', '002-1');
     	        record.set('password', '123');
     	        record.save();
-    	        console.log(record);
     	    },
     	    callback: function(record, operation, success) {
     	        console.log('callback');
     	    }
     	});
-//    	var users = Ext.create('MPortal.store.Users');
-//    	users.add({id: '1', username: 'wuwj', password: '123456'});
     }
 });

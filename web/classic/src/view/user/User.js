@@ -1,6 +1,6 @@
 Ext.define('MPortal.view.user.User', {
     extend: 'Ext.form.Panel',
-    xtype: 'user',
+    xtype: 'm-user',
     
     controller: 'user',
     

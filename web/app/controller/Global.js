@@ -1,6 +1,6 @@
 Ext.define('MPortal.controller.Global', {
     extend: 'Ext.app.Controller',
-//    namespace: 'MPortal',
+    namespace: 'MPortal',
     requires: [
         'Ext.window.*'
     ],
@@ -122,7 +122,7 @@ Ext.define('MPortal.controller.Global', {
             cmp = new ViewClass();
 
             contentPanel.add(cmp);
-            this.setupPreview(clsProto);
+//            this.setupPreview(clsProto);
 
             this.updateTitle(node);
 

@@ -1,4 +1,4 @@
-package com.moke.MPortal.shiro;
+package com.moke.core.shiro;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
