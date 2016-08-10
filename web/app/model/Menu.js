@@ -9,7 +9,7 @@ Ext.define('MPortal.model.Menu', {
     
     proxy: {
     	type: 'rest',
-        url: '/menus',
+        url: 'http://localhost:8080/menus',
         reader: {
             type: 'json',
             rootProperty: 'data'
