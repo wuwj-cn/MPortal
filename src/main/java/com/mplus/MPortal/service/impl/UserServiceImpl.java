@@ -16,4 +16,5 @@ public class UserServiceImpl extends BaseServiceImpl<User, String> implements Us
 	@Autowired
 	private UserDao userDao;
 	
+	
 }

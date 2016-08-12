@@ -1,9 +1,8 @@
 package com.mplus.MPortal.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.mplus.MPortal.model.Menu;
+import com.mplus.core.dao.BaseDao;
 
-public interface MenuDao extends JpaRepository<Menu, String> {
+public interface MenuDao extends BaseDao<Menu, String> {
 
 }

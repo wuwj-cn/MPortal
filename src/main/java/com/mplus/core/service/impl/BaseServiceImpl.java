@@ -13,6 +13,7 @@ import com.mplus.core.service.BaseService;
 @Transactional
 public class BaseServiceImpl<T, ID extends Serializable> implements BaseService<T, ID> {
 
+	@Autowired
 	private BaseDao<T, ID> baseDao;
 	
 	@Override

@@ -1,10 +1,9 @@
 package com.mplus.MPortal.dao;
 
-import org.springframework.data.repository.CrudRepository;
-
 import com.mplus.MPortal.model.User;
+import com.mplus.core.dao.BaseDao;
 
-public interface UserDao extends CrudRepository<User, String> {
+public interface UserDao extends BaseDao<User, String> {
 
   public User findByUsername(String username);
   

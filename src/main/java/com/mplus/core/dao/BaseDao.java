@@ -2,8 +2,10 @@ package com.mplus.core.dao;
 
 import java.io.Serializable;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.NoRepositoryBean;
 
-public interface BaseDao<T, ID extends Serializable> extends CrudRepository<T, ID> {
+@NoRepositoryBean
+public interface BaseDao<T, ID extends Serializable> extends JpaRepository<T, ID> {
 
 }
