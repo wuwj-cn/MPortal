@@ -29,12 +29,8 @@ public class Menu {
 	@NotEmpty(message = "菜单名称不能为空")
 	private String name;
 	
-	@ManyToOne
-    @JoinColumn(name = "parent_id")
-	private Menu parent;
-	
-	@Transient
-	private String parentId;
+	@Column(length=32)
+	private String parentCode;
 	
 	public Menu(){}
 	
@@ -57,11 +53,11 @@ public class Menu {
 		this.name = name;
 	}
 
-	public String getParentId() {
-		return parentId;
+	public String getParentCode() {
+		return parentCode;
 	}
 
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
+	public void setParentCode(String parentCode) {
+		this.parentCode = parentCode;
 	}
 }

@@ -24,7 +24,6 @@ import com.mplus.MPortal.model.User;
  *
  */
 public class MyShiroRealm extends AuthorizingRealm{
-
     private static final Logger logger = LoggerFactory.getLogger(MyShiroRealm.class);
 
     @Autowired

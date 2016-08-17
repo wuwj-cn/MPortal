@@ -15,7 +15,6 @@ import com.mplus.MPortal.service.MenuService;
 import com.mplus.core.advice.Result;
 import com.mplus.core.tree.model.TreeNode;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/menus")
 public class MenuController {
