@@ -7,14 +7,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.mplus.core.DataState;
+
 @Entity
 @Table(name = "t_menu")
-public class Menu {
+public class Menu implements java.io.Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(length=32)
@@ -29,8 +31,13 @@ public class Menu {
 	@NotEmpty(message = "菜单名称不能为空")
 	private String name;
 	
-	@Column(length=32)
-	private String parentCode;
+	@Column(name = "data_state", length = 1)
+	@NotEmpty
+	private String dataState = DataState.DEFAULT.toString();
+	
+	@ManyToOne
+	@JoinColumn(name = "parent_code", referencedColumnName = "code")
+	private Menu parent;
 	
 	public Menu(){}
 	
@@ -53,11 +60,19 @@ public class Menu {
 		this.name = name;
 	}
 
-	public String getParentCode() {
-		return parentCode;
+	public Menu getParent() {
+		return parent;
 	}
 
-	public void setParentCode(String parentCode) {
-		this.parentCode = parentCode;
+	public void setParent(Menu parent) {
+		this.parent = parent;
+	}
+
+	public String getDataState() {
+		return dataState;
+	}
+
+	public void setDataState(String dataState) {
+		this.dataState = dataState;
 	}
 }

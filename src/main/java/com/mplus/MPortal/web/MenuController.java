@@ -1,5 +1,7 @@
 package com.mplus.MPortal.web;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import com.mplus.MPortal.service.MenuService;
 import com.mplus.core.advice.Result;
 import com.mplus.core.tree.model.TreeNode;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/menus")
 public class MenuController {
@@ -40,6 +43,12 @@ public class MenuController {
 		Menu menu = menuService.findOne(id);
 		TreeNode node = new TreeNode(menu.getId(), menu.getName(), false, false);
 		return Result.sucess(node);
+	}
+	
+	@RequestMapping(value = "/tree/children/{parentCode}", method = RequestMethod.GET)
+	public Result getMenuTreeByParentCode(@PathVariable String parentCode) {
+		List<TreeNode> nodes = menuService.findChildren(parentCode);
+		return Result.sucess(nodes);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)

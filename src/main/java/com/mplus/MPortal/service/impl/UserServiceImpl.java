@@ -13,8 +13,12 @@ import com.mplus.core.service.BaseServiceImpl;
 @Transactional
 public class UserServiceImpl extends BaseServiceImpl<User, String> implements UserService {
 
-	@Autowired
-	private UserRepository userDao;
+	@Autowired private UserRepository userRepository;
+
+	@Override
+	public User findByUsername(String username) {
+		return userRepository.findByUsername(username);
+	}
 	
 	
 }

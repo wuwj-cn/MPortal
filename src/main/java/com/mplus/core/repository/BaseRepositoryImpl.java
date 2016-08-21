@@ -11,14 +11,18 @@ public class BaseRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRep
 
 	private final EntityManager em;
 	
-	public BaseRepositoryImpl(JpaEntityInformation entityInformation, EntityManager em) {
+	public BaseRepositoryImpl(JpaEntityInformation<T, ?> entityInformation, EntityManager em) {
 		super(entityInformation, em);
 		this.em = em;
 	}
-
-	@Override
-	public String testMethod() {
-		return "0";
-	}
-
+	
+//	public BaseRepositoryImpl(Class<T> domainClass, EntityManager entityManager) {
+//        super(domainClass, entityManager);
+//        this.domainClass = domainClass;
+//    }
+//
+//	@Override
+//    public boolean support(String modelType) {
+//        return domainClass.getName().equals(modelType);
+//    }
 }

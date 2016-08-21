@@ -2,23 +2,22 @@ package com.mplus.core.service;
 
 import java.io.Serializable;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mplus.core.repository.BaseRepository;
 
-@Service
-@Transactional
+//@Service
+//@Transactional
 public class BaseServiceImpl<T, ID extends Serializable> implements BaseService<T, ID> {
 
-	private BaseRepository<T, ID> baseRepository;
+	@Autowired private BaseRepository<T, ID> baseRepository;
 	
 	/**
 	 * 这里必须使用setter注入，如果使用@Autowired注入会导致异常
 	 */
-	public void setBaseRepository(BaseRepository<T, ID> baseRepository) {
-		this.baseRepository = baseRepository;
-	}
+//	public void setBaseRepository(BaseRepository<T, ID> baseRepository) {
+//		this.baseRepository = baseRepository;
+//	}
 
 	@Override
 	public <S extends T> S save(S entity) {

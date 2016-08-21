@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import com.mplus.core.repository.BaseRepositoryImpl;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.mplus.MPortal.repository", repositoryBaseClass = BaseRepositoryImpl.class)
+@EnableJpaRepositories(basePackages = "com.mplus.**.repository", repositoryBaseClass = BaseRepositoryImpl.class)
 public class JpaConfiguration {
 
 }
