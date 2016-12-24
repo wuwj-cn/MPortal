@@ -8,8 +8,9 @@ public class RadioTreeNode extends TreeNode {
 	public RadioTreeNode() {
 	}
 
-	public RadioTreeNode(String id, String text, boolean expanded, boolean leaf, boolean radio) {
+	public RadioTreeNode(String id, String code, String text, boolean expanded, boolean leaf, boolean radio) {
 		this.id = id;
+		this.code = code;
 		this.text = text;
 		this.expanded = expanded;
 		this.leaf = leaf;
@@ -17,8 +18,9 @@ public class RadioTreeNode extends TreeNode {
 		this.checked = false;
 	}
     
-	public RadioTreeNode(String id, String text, boolean expanded, boolean leaf, boolean radio, boolean disabled) {
+	public RadioTreeNode(String id, String code, String text, boolean expanded, boolean leaf, boolean radio, boolean disabled) {
 		this.id = id;
+		this.code = code;
 		this.text = text;
 		this.expanded = expanded;
 		this.leaf = leaf;

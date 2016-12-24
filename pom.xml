@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.moke</groupId>
+	<groupId>com.mplus</groupId>
 	<artifactId>MPortal</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.3.5.RELEASE</version>
+		<version>1.4.2.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
@@ -94,7 +94,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<!-- mysql end -->
-		
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -105,8 +105,17 @@
 	<build>
 		<plugins>
 			<plugin>
+				<!-- package project -->
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!-- <dependencies> -->
+				<!-- <dependency> -->
+				<!-- hot swapping -->
+				<!-- <groupId>org.springframework</groupId> -->
+				<!-- <artifactId>springloaded</artifactId> -->
+				<!-- <version>1.2.0.RELEASE</version> -->
+				<!-- </dependency> -->
+				<!-- </dependencies> -->
 			</plugin>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
@@ -131,4 +140,17 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>spring-releases</id>
+			<url>https://repo.spring.io/libs-release</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-releases</id>
+			<url>https://repo.spring.io/libs-release</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>

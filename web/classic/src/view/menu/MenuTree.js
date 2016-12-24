@@ -5,7 +5,7 @@ Ext.define('MPortal.view.menu.MenuTree', {
     id: 'menu-tree',
 
     title: '菜单列表',
-    rootVisible: false,
+    rootVisible: true,
     lines: false,
     useArrows: true,
     hideHeaders: true,
@@ -26,5 +26,9 @@ Ext.define('MPortal.view.menu.MenuTree', {
         scope: 'controller'
     }],
 
-    store: 'menus'
+    store: 'menus',
+    
+    listeners: {
+		itemclick: 'onItemClick'
+	}
 });

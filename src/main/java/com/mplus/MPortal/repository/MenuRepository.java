@@ -10,6 +10,6 @@ import com.mplus.core.repository.BaseRepository;
 
 public interface MenuRepository extends BaseRepository<Menu, String>{
 
-	@Query("from Menu where parent.code = :parentCode")
-	List<Menu> findChildren(@Param("parentCode") String parentCode);
+	@Query("from Menu where parent.id = :parentId")
+	List<Menu> findChildren(@Param("parentId") String parentId);
 }

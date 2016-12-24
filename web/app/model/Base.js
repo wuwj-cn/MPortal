@@ -3,7 +3,7 @@ Ext.define('MPortal.model.Base', {
     
     fields: [{
         name: 'id',
-        type: 'int',
+        type: 'string',
         persist: false
     }],
     

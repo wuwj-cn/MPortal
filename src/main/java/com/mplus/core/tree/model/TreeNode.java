@@ -3,6 +3,7 @@ package com.mplus.core.tree.model;
 
 public class TreeNode {
 	protected String id;
+	protected String code;
 	protected String text;
 	protected boolean expanded;
 	protected boolean leaf;
@@ -10,20 +11,29 @@ public class TreeNode {
 	public TreeNode() {
 	}
 
-	public TreeNode(String id, String text, boolean expanded, boolean leaf) {
+	public TreeNode(String id, String code, String text, boolean expanded, boolean leaf) {
 		super();
 		this.id = id;
+		this.code = code;
 		this.text = text;
 		this.expanded = expanded;
 		this.leaf = leaf;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getText() {
@@ -49,5 +59,4 @@ public class TreeNode {
 	public void setLeaf(boolean leaf) {
 		this.leaf = leaf;
 	}
-
 }

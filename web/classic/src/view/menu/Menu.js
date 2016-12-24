@@ -39,8 +39,8 @@ Ext.define('MPortal.view.menu.Menu', {
 
     items: [{
         region:'west',
-        reference: 'menu-tree',
         xtype: 'menu-tree',
+        reference: 'menu-tree',
         floatable: false,
         margin: '5 0 0 0',
         width: '100%',
@@ -49,6 +49,7 @@ Ext.define('MPortal.view.menu.Menu', {
     },{
     	region: 'center',
     	xtype: 'menu-form',
+    	reference: 'menu-form',
         collapsible: false,
         margin: '5 0 0 0'
     }]

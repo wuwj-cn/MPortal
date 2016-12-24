@@ -36,7 +36,7 @@ public class Menu implements java.io.Serializable {
 	private String dataState = DataState.DEFAULT.toString();
 	
 	@ManyToOne
-	@JoinColumn(name = "parent_code", referencedColumnName = "code")
+	@JoinColumn(name = "parent_id", referencedColumnName = "id")
 	private Menu parent;
 	
 	public Menu(){}

@@ -2,6 +2,8 @@ Ext.define('MPortal.store.Menus', {
     extend: 'Ext.data.TreeStore',
     alias: 'store.menus',
     storeId: 'menus',
+    
+    model: 'MPortal.model.Menu',
     autoLoad: true,
     autoSync: true,
 
@@ -10,17 +12,23 @@ Ext.define('MPortal.store.Menus', {
 
         me.callParent([Ext.apply({
             root: {
-                text: 'ROOT',
+                text: '系统菜单',
                 id: '0',
-                expanded: true,
-                children: me.data
+                code: '0',
+                expanded: true
             }
         }, config)]);
     },
     
     proxy: {
     	type: 'rest',
-        url: '/menus/tree',
+//    	url: 'http://localhost:8080/menus/',
+        api: {
+            create  : 'http://localhost:8080/menus/create',
+            read    : 'http://localhost:8080/menus/tree/children',
+            update  : 'http://localhost:8080/menus/update',
+            destroy : 'http://localhost:8080/menus/delete'
+        },
         reader: {
             type: 'json',
             rootProperty: 'data'

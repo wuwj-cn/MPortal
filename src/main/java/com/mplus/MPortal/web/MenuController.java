@@ -32,7 +32,7 @@ public class MenuController {
 		return Result.sucess(list);
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
 	public Result get(@PathVariable String id) {
 		Menu menu = menuService.findOne(id);
 		return Result.sucess(menu);
@@ -41,24 +41,26 @@ public class MenuController {
 	@RequestMapping(value = "/tree/{id}", method = RequestMethod.GET)
 	public Result getMenuTree(@PathVariable String id) {
 		Menu menu = menuService.findOne(id);
-		TreeNode node = new TreeNode(menu.getId(), menu.getName(), false, false);
+		TreeNode node = new TreeNode(menu.getId(), menu.getCode(), menu.getName(), false, false);
 		return Result.sucess(node);
 	}
 	
-	@RequestMapping(value = "/tree/children/{parentCode}", method = RequestMethod.GET)
-	public Result getMenuTreeByParentCode(@PathVariable String parentCode) {
-		List<TreeNode> nodes = menuService.findChildren(parentCode);
+	@RequestMapping(value = "/tree/children/{parentId}", method = RequestMethod.GET)
+	public Result getMenuTreeByParentCode(@PathVariable String parentId) {
+		List<TreeNode> nodes = menuService.findChildren(parentId);
 		return Result.sucess(nodes);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public Result create(@RequestBody Menu menu) {
+		Menu parent = menuService.findOne(menu.getParent().getId());
+		menu.setParent(parent);
 		menuService.save(menu);
 		return Result.sucess(menu);
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public Result update(@PathVariable Long id, @RequestBody Menu menu) {
+	@RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+	public Result update(@PathVariable String id, @RequestBody Menu menu) {
 		if(!id.equals(menu.getId())) {
 			logger.warn("9001", "指定对象ID不匹配");
 			return Result.failure("9001");
@@ -67,7 +69,7 @@ public class MenuController {
 		return Result.sucess(menu);
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public Result delete(@PathVariable String id) {
 		Menu menu = menuService.findOne(id);
 		if(null == menu) {

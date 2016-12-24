@@ -8,5 +8,5 @@ import com.mplus.core.tree.model.TreeNode;
 
 public interface MenuService extends BaseService<Menu, String>{
 
-	public List<TreeNode> findChildren(String parentCode);
+	public List<TreeNode> findChildren(String parentId);
 }

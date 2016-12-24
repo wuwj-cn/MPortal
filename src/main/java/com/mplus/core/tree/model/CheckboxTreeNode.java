@@ -8,16 +8,18 @@ public class CheckboxTreeNode extends TreeNode {
 	public CheckboxTreeNode() {
 	}
 
-	public CheckboxTreeNode(String id, String text, boolean expanded, boolean leaf, boolean checked) {
+	public CheckboxTreeNode(String id, String code, String text, boolean expanded, boolean leaf, boolean checked) {
 		this.id = id;
+		this.code = code;
 		this.text = text;
 		this.expanded = expanded;
 		this.leaf = leaf;
 		this.checked = checked;
 	}
     
-	public CheckboxTreeNode(String id, String text, boolean expanded, boolean leaf, boolean checked, boolean disabled) {
+	public CheckboxTreeNode(String id, String code, String text, boolean expanded, boolean leaf, boolean checked, boolean disabled) {
 		this.id = id;
+		this.code = code;
 		this.text = text;
 		this.expanded = expanded;
 		this.leaf = leaf;

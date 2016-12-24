@@ -1,0 +1,3 @@
+####MPortal application start###
+${application.version}
+${spring-boot.version}
