@@ -122,11 +122,9 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<url>http://139.196.40.16:8080/manager/html</url>
+					<url>http://139.196.40.16:8080/manager/text</url>
 					<username>admin</username>
 					<password>admin</password>
-					<server>tomcat</server>
-					<path>/MPortal</path>
 				</configuration>
 				<!-- <executions> -->
 				<!-- <execution> -->
